@@ -1,11 +1,14 @@
+import type { ClientMessagePayload, ServerMessagePayload } from "./types";
+
 // connections.ts
 type WebSocketMessage = Record<string, any>;
-type Listener = (message: MessageEvent) => void;
+type Listener = (message: ServerMessagePayload) => void;
 
 class WebSocketManager {
     private static instance: WebSocketManager;
     private ws: WebSocket | null = null;
     private listeners: Listener[] = [];
+    private userId: number | null = null;
 
     private constructor() {
         this.initialize();
@@ -39,6 +42,8 @@ class WebSocketManager {
 
     // TODO: Hacer una  cola de datos que se refresque y reenvie
     public send(data: WebSocketMessage) {
+        console.log("Sending!", data)
+
         if (this.ws?.readyState === WebSocket.OPEN) {
             this.ws.send(JSON.stringify(data));
         }
@@ -63,20 +68,36 @@ class WebSocketManager {
 
     private handleMessage(e: MessageEvent) {
         console.log('Server response:', e.data);
-
         // Notificar a todos los listeners
         try {
-            const data = JSON.parse(e.data);
+            const data: ServerMessagePayload = JSON.parse(e.data);
+
+            if (data.action === "login" && data.payload.key && data.payload.status === "success") {
+                this.userId = data.payload.key;
+            }
+
             this.listeners.forEach(listener => listener(data));
         } catch (error) {
             console.error('Error parsing message:', error);
         }
     }
+
+    public get currentUserId(): number | null {
+        return this.userId;
+    }
+
 }
 
 // Singleton instance
 const wsManager = WebSocketManager.getInstance();
 
-export const send = (data: WebSocketMessage) => wsManager.send(data);
+export const send = (data: Omit<ClientMessagePayload, 'userId'>) => {
+    const payload = {
+        ...data,
+        user: wsManager.currentUserId?.toString(),
+    }
+
+    wsManager.send(payload);
+};
 export const closeConnection = () => wsManager.close();
 export const listen = (listener: Listener) => wsManager.listen(listener);

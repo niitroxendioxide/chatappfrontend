@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Button from './components/chat/sendmessage'
+import MessageTextBox from './components/chat/messagetextbox'
 import './App.css'
 
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Button />
+      <MessageTextBox />
     </>
   )
 }
