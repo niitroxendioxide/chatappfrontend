@@ -1,8 +1,8 @@
-import type { ClientMessagePayload, ServerMessagePayload } from "./types";
+import type { ClientMessagePayload, ServerMessage } from "./types";
 
 // connections.ts
 type WebSocketMessage = Record<string, any>;
-type Listener = (message: ServerMessagePayload) => void;
+type Listener = (message: ServerMessage) => void;
 
 class WebSocketManager {
     private static instance: WebSocketManager;
@@ -70,7 +70,7 @@ class WebSocketManager {
         console.log('Server response:', e.data);
         // Notificar a todos los listeners
         try {
-            const data: ServerMessagePayload = JSON.parse(e.data);
+            const data: ServerMessage = JSON.parse(e.data);
 
             if (data.action === "login" && data.payload.key && data.payload.status === "success") {
                 this.userId = data.payload.key;
@@ -101,3 +101,4 @@ export const send = (data: Omit<ClientMessagePayload, 'userId'>) => {
 };
 export const closeConnection = () => wsManager.close();
 export const listen = (listener: Listener) => wsManager.listen(listener);
+export const getUserId = () => wsManager.currentUserId?.toString()

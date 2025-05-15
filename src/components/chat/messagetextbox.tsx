@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { send } from '../../utils/connections';
 import { type ClientMessagePayload } from '../../utils/types';
+import messagetextbox from './messagetextbox.module.css'
 
 const MessageTextBox = () => {
     //const userId = useWebSocketUser();
@@ -20,16 +21,18 @@ const MessageTextBox = () => {
     };
 
     return (
-        <div className="message-box">
-        <input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={"Escribe tu mensaje..."}
-        />
+        <div className={`${messagetextbox.textbox}`}>
+            <input
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder={"Escribe tu mensaje..."}
+                size={50}
+                height={150}
+            />
 
-        <button onClick={handleSend} disabled={!message.trim()}>
-            Enviar
-        </button>
+            <button onClick={handleSend} disabled={!message.trim()}>
+                Enviar
+            </button>
         </div>
     );
 };

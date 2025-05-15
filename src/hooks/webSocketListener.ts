@@ -1,9 +1,9 @@
 // hooks/useWebSocket.ts
 import { listen } from '../utils/connections';
 import { useEffect } from 'react';
-import type { ServerMessagePayload } from '../utils/types';
+import type { ServerMessage } from '../utils/types';
 
-export const useSocketListener = (callback: (message: ServerMessagePayload) => void) => {
+export const useSocketListener = (callback: (message: ServerMessage) => void) => {
     useEffect(() => {
         const cleanup = listen((event) => {
             try {

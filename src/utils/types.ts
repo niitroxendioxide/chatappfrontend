@@ -7,14 +7,16 @@ export interface ClientMessagePayload {
 }
 
 export interface ServerMessagePayload {
+    key?: number,
+    status?: "success" | "fail",
+    user?: string,
+    content?: string,
+}
+
+export interface ServerMessage {
     action: 'message' | 'information' | 'login';
     timestamp?: number,
-    payload: {
-        key?: number,
-        status?: "success" | "fail",
-        user?: string,
-        content?: string,
-    };
+    payload: ServerMessagePayload;
 }
 
 export interface MessageTextBoxProps {
