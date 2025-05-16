@@ -67,7 +67,6 @@ class WebSocketManager {
     }
 
     private handleMessage(e: MessageEvent) {
-        console.log('Server response:', e.data);
         // Notificar a todos los listeners
         try {
             const data: ServerMessage = JSON.parse(e.data);

@@ -6,16 +6,27 @@ export interface ClientMessagePayload {
     };
 }
 
+export type status = "success" | "fail"
+
 export interface ServerMessagePayload {
-    key?: number,
-    status?: "success" | "fail",
+    key: number,
+    status: status,
+    content: string,
     user?: string,
-    content?: string,
+}
+
+export interface UserMessage {
+    content: string,
+    user: string,
+
+    key: number,
+    timestamp: string,
+
 }
 
 export interface ServerMessage {
-    action: 'message' | 'information' | 'login';
-    timestamp?: number,
+    action: 'message' | 'information' | 'login' | 'history';
+    timestamp: string,
     payload: ServerMessagePayload;
 }
 

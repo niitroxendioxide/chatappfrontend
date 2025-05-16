@@ -1,19 +1,35 @@
-.message_container {
-    width: 80%;
-    max-width: 700px;
-    height: 500px;
-    max-height: 70dvh;
+.mainchat {
+    width: 40%;
+    max-width: 60dvw;
+    height: 70vh;
+    max-height: 80dvh;
 
     background-color: #202331;
     border-radius: 8px;
-    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+
+    justify-content: center;
+    gap: 3px;
+
+}
+
+.message_container {
+    width: 98%;
+    height: 98%;
+
+    border-radius: 8px;
+    padding: 0.5rem;
 
     display: flex;
     flex-direction: column;
     align-items: end;
-    overflow-y: auto;
+    overflow-y: scroll;
 
     gap: 3px;
+    justify-content: flex-end;
 }
 
 .message_item {
@@ -49,5 +65,12 @@
 }
 
 .own_message .username {
-    color: aqua;
+    color: rgb(173, 179, 255);
+}
+
+.timestamp {
+    gap: 2px;
+    font-size: .65rem;
+    color: rgb(210, 213, 246);
+    align-self:baseline,
 }

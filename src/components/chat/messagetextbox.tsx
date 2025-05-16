@@ -1,5 +1,5 @@
 // messagetextbox.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { send } from '../../utils/connections';
 import { type ClientMessagePayload } from '../../utils/types';
 import messagetextbox from './messagetextbox.module.css'
@@ -20,11 +20,20 @@ const MessageTextBox = () => {
         setMessage('');
     };
 
+    const handleOnKey = (event: React.KeyboardEvent) => {
+        console.log(event.type)
+
+        if (event.key === 'Enter') {
+            handleSend();
+        }
+    }
+
     return (
         <div className={`${messagetextbox.textbox}`}>
             <input
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={handleOnKey}
                 placeholder={"Escribe tu mensaje..."}
                 size={50}
                 height={150}
