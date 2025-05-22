@@ -1,6 +1,7 @@
 .mainchat {
-    width: 40%;
-    max-width: 60dvw;
+    width: 50dvw;
+    max-width: 800px;
+    min-width: 300px;
     height: 70vh;
     max-height: 80dvh;
 
@@ -35,6 +36,10 @@
 .message_item {
     padding: 5px 10px;
     border-radius: 10px;
+
+    position: relative;
+    text-wrap: wrap;
+    max-width: 75%;
 }
 
 .own_message {
@@ -53,11 +58,8 @@
 
 .message_user {
     display: flex;
-    gap:5px;
-}
-
-.own_message .message_user{
-    flex-direction: row-reverse;
+    flex-direction: column;
+    position: relative;
 }
 
 .username {
@@ -66,11 +68,43 @@
 
 .own_message .username {
     color: rgb(173, 179, 255);
+    align-self: flex-end;
+}
+
+.own_message .message_text {
+    margin-right: 5px;
 }
 
 .timestamp {
-    gap: 2px;
     font-size: .65rem;
     color: rgb(210, 213, 246);
-    align-self:baseline,
+    opacity: .6;
+}
+
+.message_body {
+    display: flex;
+}
+
+.other_message .message_body {
+    flex-direction: row;
+}
+
+.own_message .message_body {
+    flex-direction: row-reverse;
+}
+
+.other_message .timestamp {
+    margin-left: 15px;
+    align-self: flex-end;
+}
+
+.own_message .timestamp {
+    margin-right: 15px;
+    align-self: flex-end;
+}
+
+.message_text {
+  word-break: break-word;
+  line-height: 1;
+  /*text-indent: 5px;*/
 }

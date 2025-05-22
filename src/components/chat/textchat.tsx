@@ -62,13 +62,16 @@ const ChatPrincipal = () => {
                   )}
                   data-user-id={message.user}
               >
-                  <div>
-                    <span className={`${textchat.message_user}`}>
-                        <div className={`${textchat.timestamp}`}>{formatTime(message.timestamp)}</div>
-                        <div className={`${textchat.username}`}>{message.user === currentUser ? 'You' : 'Usuario ' + message.user}</div> 
-                        <div>{message.content.replace(/^"(.*)"$/, '$1')}</div>
-                    </span>
-                  </div>
+
+                      <span className={`${textchat.message_user}`}>
+                          <div className={`${textchat.username}`}>{message.user === currentUser ? 'You' : 'Usuario ' + message.user}</div> 
+
+                          <div className={`${textchat.message_body}`}>
+                              <p className={`${textchat.message_text}`}>{message.content.replace(/^"(.*)"$/, '$1')}</p>
+                              <div className={`${textchat.timestamp}`}>{formatTime(message.timestamp)}</div>
+                          </div>
+                      </span>
+                  
               </div>
               ))
         )}

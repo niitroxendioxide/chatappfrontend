@@ -25,7 +25,7 @@ export interface UserMessage {
 }
 
 export interface ServerMessage {
-    action: 'message' | 'information' | 'login' | 'history';
+    action: 'message' | 'information' | 'login' | 'history' | "user_remove" | "user_add";
     timestamp: string,
     payload: ServerMessagePayload;
 }
