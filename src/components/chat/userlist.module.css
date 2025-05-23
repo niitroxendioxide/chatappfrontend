@@ -1,1 +1,13 @@
 
+
+
+.mainlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_container {
+    display: flex;
+    flex-direction: column;
+}

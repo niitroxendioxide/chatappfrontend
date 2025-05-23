@@ -11,12 +11,12 @@ function App() {
   return (
     <div>
       <div className='main-chat'>
-        <UserList />
         <h2>Global Chat</h2>
         <ChatPrincipal />
         <MessageTextBox />
       </div>
       <div className='side-bar'>
+        <UserList />
       </div>
     </div>
   )
