@@ -1,4 +1,4 @@
-
+import userlist from './userlist.module.css'
 import { useState } from "react";
 import { useSocketListener } from "../../hooks/webSocketListener";
 
@@ -19,8 +19,8 @@ function UserList() {
     })
 
     return (
-        <div className="mainlist">
-            <div className="userObj">
+        <div className={`${userlist.mainlist}`}>
+            <div className={`${userlist.user_container}`}>
                 {userList.length === 0 ? (
                     <p>No hay usuarios</p>
                 ) : (

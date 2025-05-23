@@ -1,7 +1,6 @@
 .textbox {
-    width: 50dvw;
-    max-width: 800px;
-    min-width: 300px;
+    width: 40%;
+    min-width: 500px;
 }
 
 .textbox input {

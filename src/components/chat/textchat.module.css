@@ -1,45 +1,55 @@
 .mainchat {
-    width: 50dvw;
-    max-width: 800px;
-    min-width: 300px;
-    height: 70vh;
-    max-height: 80dvh;
+    width: 70%;
+    max-width: 700px;
+    min-width: 700px;
+    height: 100%;
 
     background-color: #202331;
     border-radius: 8px;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     justify-content: center;
     gap: 3px;
-
+    overflow: hidden;
 }
 
 .message_container {
-    width: 98%;
-    height: 98%;
+    width: 100%;
+    height: 100%;
+    flex: 1;
 
     border-radius: 8px;
     padding: 0.5rem;
+    
 
     display: flex;
     flex-direction: column;
     align-items: end;
-    overflow-y: scroll;
-
     gap: 3px;
-    justify-content: flex-end;
+
+    overflow: auto;
+}
+
+.message_container::-webkit-scrollbar {
+    background-color: transparent;
+    width: 5px;
+}
+
+.message_container::-webkit-scrollbar-thumb {
+    background-color: rgb(182, 182, 182);
 }
 
 .message_item {
-    padding: 5px 10px;
+    padding: 0 10px 6px 10px;
     border-radius: 10px;
 
-    position: relative;
     text-wrap: wrap;
     max-width: 75%;
+    height:fit-content;
 }
 
 .own_message {
@@ -60,10 +70,12 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    gap:3px;
 }
 
 .username {
     font-weight: bold;
+    line-height: normal;
 }
 
 .own_message .username {
@@ -79,6 +91,8 @@
     font-size: .65rem;
     color: rgb(210, 213, 246);
     opacity: .6;
+    align-self: flex-end;
+    line-height: 1;
 }
 
 .message_body {
@@ -95,16 +109,14 @@
 
 .other_message .timestamp {
     margin-left: 15px;
-    align-self: flex-end;
 }
 
 .own_message .timestamp {
     margin-right: 15px;
-    align-self: flex-end;
 }
 
 .message_text {
-  word-break: break-word;
+  word-break:break-word;
   line-height: 1;
   /*text-indent: 5px;*/
 }
