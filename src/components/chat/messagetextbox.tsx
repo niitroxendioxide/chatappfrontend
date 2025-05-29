@@ -1,5 +1,5 @@
 // messagetextbox.tsx
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { send } from '../../utils/connections';
 import { type ClientMessagePayload } from '../../utils/types';
 import messagetextbox from './messagetextbox.module.css'
@@ -13,7 +13,7 @@ const MessageTextBox = () => {
 
         const payload: ClientMessagePayload = {
             action: 'msgsend',
-            data: { message_content: message.trim() }
+            data: { message_content: message.trim(), replying_to: 0 }
         };
 
         await send(payload);

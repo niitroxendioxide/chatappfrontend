@@ -4,11 +4,15 @@
   padding: 0;
 }
 
-.main-chat {
+.app-container {
   position: relative;
   height: 100dvh;
   width: 100dvw;
+}
 
+.main-chat {
+  height: 100%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,18 +26,11 @@
   position: fixed;
   right: 0;
   top: 0;
-  height: 100vh;
-  width: 200px; /* Ajusta el ancho según tus necesidades */
-  background-color: #1e1333;
+  height: 100%;
+  width: 25%;
   padding: 20px;
+  min-width: 260px;
 
-  /* Opcional: Puedes usar position: sticky si quieres que el sidebar se mantenga fijo al hacer scroll */
-  /* position: sticky; */
-  /* top: 0; */
-}
-
-.side-bar p {
-  display: flex;
 }
 /*
 #root {

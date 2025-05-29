@@ -3,6 +3,7 @@ export interface ClientMessagePayload {
     data: {
         key?: string;
         message_content: string;
+        replying_to?: number;
     };
 }
 
