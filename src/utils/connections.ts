@@ -1,4 +1,5 @@
 import type { ClientMessagePayload, ServerMessage } from "./types";
+import { PORT, IP  } from "../static/net";
 
 // connections.ts
 type WebSocketMessage = Record<string, unknown>;
@@ -23,7 +24,7 @@ class WebSocketManager {
     }
 
     private initialize() {
-        this.ws = new WebSocket('ws://192.168.30.147:8080');
+        this.ws = new WebSocket(`ws://${IP}:${PORT}`);
 
         this.ws.onopen = () => {
             console.log('Connected!');

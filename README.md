@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Aplicación Chat Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto planteado como aplicación web que permite la comunicación a tiempo real en base al protocolo de red WebSockets.
+Este es el Front-end, o sea, la aplicación que ejecuta cada usuario, encargada de enviar mensajes y mostrarlos en pantalla.
+Está desarrollada utilizando React + Vite + TypeScript, es una implementación breve en modulos y por ahora contiene solo
+archivos necesarios para la demostración del protocolo de red WebSockets
 
-Currently, two official plugins are available:
+### Como Ejecutar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este programa requiere Node.JS para correr, en caso de no tenerlo instalar, recomendable utilizar la última version accesible,
+una vez Node.JS instalado, correr los siguientes comandos en la consola dentro de la carpeta root del proyecto.
 
-## Expanding the ESLint configuration
+Es necesario tener en cuenta que la aplicación requiere de el repositorio back-end para poder mostrar mensajes en pantalla, una vez 
+clonado el repositorio backend y esté ejecutandose seguír los siguientes pasos:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Ejecutar el comando `npm install`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Editar la IP del archivo "static/net.ts" a la IP privada del dispositivo ejecutando la aplicación backend
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Ejecutar el comando `npm run dev`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Documentación
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Componentes
+
+Hay trés modulos de componentes de la pantalla principal al momento de ser escrita esta documentación, estos son:
+- `messagetextbox.tsx`
+- `textchat.tsx`
+- `userlist.tsx`
+
+El `messagetextbox.tsx` incluye la caja de texto **\<input>** para escribir el mensaje y su **\<button>** respectivo para enviarlo, además de tener
+el código respectivo para conectarlo. 
+
+El componente `textchat.tsx`, por otro lado, es quien se encarga de mostrar todos los mensajes. 
+
+Por último, el component `userlist.tsx` se encarga de mostrar cada usuario conectado al servidor en el momento actual, agregando o 
+removiendo a cada usuario de la lista.
+
+### Modulos Auxiliares
+
+En la carpeta `/utils/` se encuentran modulos de utilidad que apoyan al código para mantenerlo mas fácil de leer. por ejemplo:
+`connections.ts` define la clase `WebSocketManager` que crea una conexión unica con el servidor para ser manejada por los distintos archivos del
+programa. El archivo `time.ts` brinda utilidades para mostrar el tiempo en pantalla y el archivo `types.ts` contiene las distintas estructuras 
+de datos o interfaces parar el programa
+
+### Hooks
+
+Los hooks son funciones que permiten que un sistema base se conecte a una extensión del código, son usadas en los distintos componentes son utilizados para 
+acceder a las conexiones de cierto tipo, hay dos hooks uno destinado a ser usado en el lado del Login, y ejecutara código en el momento que el usuario 
+se loguee (`hooks/useWebSocketUser.ts`) y otro destinado a usos generales de comunicación WebSocket (`hooks/webSocketListener.ts`)
