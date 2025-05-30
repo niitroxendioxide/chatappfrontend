@@ -23,7 +23,7 @@ class WebSocketManager {
     }
 
     private initialize() {
-        this.ws = new WebSocket('ws://192.168.50.14:8080');
+        this.ws = new WebSocket('ws://192.168.30.147:8080');
 
         this.ws.onopen = () => {
             console.log('Connected!');
