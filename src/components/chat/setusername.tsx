@@ -3,9 +3,11 @@ import { send } from "../../utils/connections";
 import type { ClientMessagePayload } from "../../utils/types";
 import { useSocketListener } from "../../hooks/webSocketListener";
 import { setUserName } from "../../utils/connections";
+import setuser from './setusername.module.css'
 
 function NameApp() {
     const [ownUserName, setToSendUserName] = useState('');
+    const [HasUsername, setHasUsername] = useState(false)
 
 
     const handleSend = async () => {
@@ -17,6 +19,8 @@ function NameApp() {
         };
 
         await send(payload);
+        setHasUsername(true);
+        console.log(HasUsername)
         setToSendUserName('');
     };
 
@@ -38,14 +42,19 @@ function NameApp() {
         }
     })
 
-    return (<div>
-        <input
-            value={ownUserName}
-            onChange={(e) => setToSendUserName(e.target.value)}
-            onKeyDown={handleOnKey}
-            placeholder={"Escribe tu mensaje..."}
-        />
-        <button onClick={handleSend}>Set username</button>
+    return (<div className={`${setuser.input_container} ${HasUsername ? setuser.not_active : ''}`}>
+        <div className={`${setuser.form_container}`}>
+            <input
+                value={ownUserName}
+                onChange={(e) => setToSendUserName(e.target.value)}
+                onKeyDown={handleOnKey}
+                placeholder={"Escribe tu mensaje..."}
+                className={`${setuser.input}`}
+            />
+            <button onClick={handleSend}>
+                
+            </button>
+        </div>
     </div>)
 }
 

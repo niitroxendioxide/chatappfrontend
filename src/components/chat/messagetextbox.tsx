@@ -39,9 +39,7 @@ const MessageTextBox = () => {
                 height={150}
             />
 
-            <button onClick={handleSend} disabled={!message.trim()}>
-                Enviar
-            </button>
+            <button onClick={handleSend} ></button>
         </div>
     );
 };

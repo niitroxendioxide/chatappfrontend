@@ -11,9 +11,6 @@ function App() {
 
   return (
     <div className='app-container'>
-      <div>
-        <NameApp />
-      </div>
       <div className='main-chat'>
         <h2>Global Chat</h2>
         <ChatPrincipal />

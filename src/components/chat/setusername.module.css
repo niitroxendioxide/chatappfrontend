@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.input_container {
+    width: 100%;
+    height: 100%;
+
+    background-color: #20233170;
+    backdrop-filter: blur(1.5px);
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.form_container {
+    background-color: #00000033;
+    padding: 2.5rem;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input_container input {
+    width: 300px;
+    border: none;
+    opacity: 0.7;
+    padding: 10px 15px;
+    outline: 0;
+    border-radius: 5px;
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.input_container button {
+    width: 139px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+
+    font-size: 13px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: white;
+    
+    position: relative;
+    background-color: #F39237;    
+    overflow: hidden;
+
+    transition: all .4s;
+}
+
+.input_container button::before {
+    content: 'Ingresa Nombre';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 0 #0E79B2;
+
+    transition: all .4s;
+}
+
+.input_container button:hover {
+    cursor: pointer;   
+    color: black;
+}
+
+.input_container button:hover::before {
+    box-shadow: inset 200px 0 0 0 #0E79B2;
+    color: black;
+}
+
+.not_active {
+    display: none;
+}

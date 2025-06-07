@@ -6,6 +6,7 @@ import cn from 'classnames';
 import textchat from './textchat.module.css'
 import { formatTime } from '../../utils/time';
 import { getUserName } from '../../utils/connections';
+import NameApp from './setusername';
 
 // Uso en componentes:
 const ChatPrincipal = () => {
@@ -75,8 +76,9 @@ const ChatPrincipal = () => {
                   
               </div>
               ))
-        )}
+        )} 
       </div>
+      <NameApp /> 
     </div>
   );
 };
