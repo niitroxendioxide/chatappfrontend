@@ -5,6 +5,7 @@ import { getUserId } from '../../utils/connections';
 import cn from 'classnames';
 import textchat from './textchat.module.css'
 import { formatTime } from '../../utils/time';
+import { getUserName } from '../../utils/connections';
 
 // Uso en componentes:
 const ChatPrincipal = () => {
@@ -64,7 +65,7 @@ const ChatPrincipal = () => {
               >
 
                       <div className={`${textchat.message_user}`}>
-                          <div className={`${textchat.username}`}>{message.user === currentUser ? 'You' : 'Usuario ' + message.user}</div> 
+                          <div className={`${textchat.username}`}>{message.user === currentUser ? 'You' : getUserName(parseInt(message.user))}</div> 
 
                           <div className={`${textchat.message_body}`}>
                               <p className={`${textchat.message_text}`}>{message.content.replace(/^"(.*)"$/, '$1')}</p>

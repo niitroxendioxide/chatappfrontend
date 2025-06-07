@@ -1,8 +1,9 @@
 
 import ChatPrincipal from './components/chat/textchat'
 import MessageTextBox from './components/chat/messagetextbox'
-import './App.css'
 import UserList from './components/chat/userlist'
+import NameApp from './components/chat/setusername'
+import './App.css'
 
 
 function App() {
@@ -10,6 +11,9 @@ function App() {
 
   return (
     <div className='app-container'>
+      <div>
+        <NameApp />
+      </div>
       <div className='main-chat'>
         <h2>Global Chat</h2>
         <ChatPrincipal />

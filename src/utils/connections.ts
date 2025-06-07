@@ -10,6 +10,7 @@ class WebSocketManager {
     private ws: WebSocket | null = null;
     private listeners: Listener[] = [];
     private userId: number | null = null;
+    private static userNames: Map<number, string> = new Map<number, string>();
 
     private constructor() {
         this.initialize();
@@ -87,6 +88,21 @@ class WebSocketManager {
         return this.userId;
     }
 
+    public setUserName(userId: number, userName: string) {
+        WebSocketManager.userNames.set(userId, userName.replace(/^"|"$/g, ''));
+    }
+
+    public getUserName(userId: number) {
+        const userNameFound = WebSocketManager.userNames.get(userId);
+
+        console.log(userNameFound, "username");
+        if (userNameFound == undefined) {
+            return "Anónimo " + userId;
+        }
+
+        return userNameFound;
+    }
+
 }
 
 // Singleton instance
@@ -102,4 +118,6 @@ export const send = (data: Omit<ClientMessagePayload, 'userId'>) => {
 };
 export const closeConnection = () => wsManager.close();
 export const listen = (listener: Listener) => wsManager.listen(listener);
-export const getUserId = () => wsManager.currentUserId?.toString()
+export const getUserId = () => wsManager.currentUserId?.toString();
+export const getUserName = (userId: number) => wsManager.getUserName(userId);
+export const setUserName = (userId: number, newName: string) => wsManager.setUserName(userId, newName);

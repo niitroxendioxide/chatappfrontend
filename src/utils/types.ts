@@ -1,5 +1,5 @@
 export interface ClientMessagePayload {
-    action: 'msgsend' | 'msgdelete'; // Especifica acciones permitidas
+    action: 'msgsend' | 'msgdelete' | 'setuser'; // Especifica acciones permitidas
     data: {
         key?: string;
         message_content: string;
@@ -26,7 +26,7 @@ export interface UserMessage {
 }
 
 export interface ServerMessage {
-    action: 'message' | 'information' | 'login' | 'history' | "user_remove" | "user_add";
+    action: 'message' | 'information' | 'login' | 'history' | "user_remove" | "user_add" | "set_username";
     timestamp: string,
     payload: ServerMessagePayload;
 }

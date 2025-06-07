@@ -1,6 +1,7 @@
 import userlist from './userlist.module.css'
 import { useState } from "react";
 import { useSocketListener } from "../../hooks/webSocketListener";
+import { getUserName } from '../../utils/connections';
 import profile_pic from '../../assets/default-profile-pic.jpg';
 
 function UserList() {
@@ -42,7 +43,7 @@ function UserList() {
                         <div className={`${userlist.picture_container}`}>
                             <img src={profile_pic} alt="Placeholder for profile pic" className={`${userlist.profile_picture}`} />
                         </div>
-                        <h3>Usuario <span>{user_id}</span></h3>
+                        <h3>{getUserName(user_id)}</h3>
                         <div className={`${userlist.connected_dot}`}></div>   
                     </div>
                     ))
