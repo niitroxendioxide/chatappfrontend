@@ -1,6 +1,6 @@
 // messagetextbox.tsx
 import { useState } from 'react';
-import { send } from '../../utils/connections';
+import { hasUserName, send } from '../../utils/connections';
 import { type ClientMessagePayload } from '../../utils/types';
 import messagetextbox from './messagetextbox.module.css'
 
@@ -9,7 +9,7 @@ const MessageTextBox = () => {
     const [message, setMessage] = useState('');
 
     const handleSend = async () => {
-        if (!message.trim()) return;
+        if (!message.trim() || !hasUserName()) return;
 
         const payload: ClientMessagePayload = {
             action: 'msgsend',
@@ -39,7 +39,7 @@ const MessageTextBox = () => {
                 height={150}
             />
 
-            <button onClick={handleSend} ></button>
+            <button onClick={handleSend} disabled={!message.trim() || !hasUserName()}></button>
         </div>
     );
 };

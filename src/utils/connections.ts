@@ -97,10 +97,18 @@ class WebSocketManager {
 
         console.log(userNameFound, "username");
         if (userNameFound == undefined) {
-            return "Anónimo " + userId;
+            return ["Anónimo " + userId, false];
         }
 
-        return userNameFound;
+        return [userNameFound, true]
+    }
+
+    public hasUserName() {
+        if (!this.currentUserId) return;
+
+        const userNameFound = WebSocketManager.userNames.get(this.currentUserId);
+
+        return userNameFound != undefined;
     }
 
 }
@@ -121,3 +129,4 @@ export const listen = (listener: Listener) => wsManager.listen(listener);
 export const getUserId = () => wsManager.currentUserId?.toString();
 export const getUserName = (userId: number) => wsManager.getUserName(userId);
 export const setUserName = (userId: number, newName: string) => wsManager.setUserName(userId, newName);
+export const hasUserName = () => wsManager.hasUserName();

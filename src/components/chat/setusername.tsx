@@ -48,11 +48,10 @@ function NameApp() {
                 value={ownUserName}
                 onChange={(e) => setToSendUserName(e.target.value)}
                 onKeyDown={handleOnKey}
-                placeholder={"Escribe tu mensaje..."}
+                placeholder={"Escribe tu nombre de usuario"}
                 className={`${setuser.input}`}
             />
             <button onClick={handleSend}>
-                
             </button>
         </div>
     </div>)
