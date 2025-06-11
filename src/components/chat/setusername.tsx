@@ -32,16 +32,6 @@ function NameApp() {
         }
     }
 
-    useSocketListener((event) => {
-        const { payload } = event;
-
-        if (event.action == "set_username" && payload.user) {
-            console.log("Username change for: ", payload.user);
-
-            setUserName(parseInt(payload.user), payload.content);
-        }
-    })
-
     return (<div className={`${setuser.input_container} ${HasUsername ? setuser.not_active : ''}`}>
         <div className={`${setuser.form_container}`}>
             <input

@@ -72,7 +72,7 @@ class WebSocketManager {
         // Notificar a todos los listeners
         try {
             const data: ServerMessage = JSON.parse(e.data);
-            console.log(data);
+            //console.log(data);
 
             if (data.action === "login" && data.payload.key && data.payload.status === "success") {
                 this.userId = data.payload.key;
