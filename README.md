@@ -5,6 +5,9 @@ Este es el Front-end, o sea, la aplicación que ejecuta cada usuario, encargada 
 Está desarrollada utilizando React + Vite + TypeScript, es una implementación breve en modulos y por ahora contiene solo
 archivos necesarios para la demostración del protocolo de red WebSockets
 
+Presentación: https://docs.google.com/presentation/d/1gxCQblTd0YT3NhLiqpPpbJL8Y5p-2VA6roaKXZGnJxk/edit
+
+
 ### Como Ejecutar
 
 Este programa requiere Node.JS para correr, en caso de no tenerlo instalar, recomendable utilizar la última version accesible,
