@@ -1,2 +1,2 @@
-export const IP = "172.18.27.99"
+export const IP = "192.168.50.14"
 export const PORT = "8080"
